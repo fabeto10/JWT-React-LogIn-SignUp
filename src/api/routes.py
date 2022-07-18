@@ -16,13 +16,16 @@ api = Blueprint('api', __name__)
 def create_token():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    if email != "test" or password != "test":
+    # if email is None or password is None: return jsonify(
+    #     "revise el payload de su solicitud"
+    # ), 400
+    user =  User.query.filter_by(email = email, password=password).one_or_none()
+    if user is None:
         return jsonify({"msg": "Bad username or password"}), 401
-
-    access_token = create_access_token(identity=email)
+    access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
-@api.route("/hello", methods=['GET', 'POST'])
+@api.route("/private", methods=['GET', 'POST'])
 @jwt_required()
 def get_hello():
     email = get_jwt_identity()

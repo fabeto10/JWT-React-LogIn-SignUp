@@ -19,6 +19,7 @@ export const SignUp = () => {
       className="container flex-column d-flex align-items-center justify-content-center"
     >
       <div className="row my-2">
+        <h1 className="justify-content-center">Sign Up</h1>
         <form>
           <input
             type={"text"}

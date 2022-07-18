@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           };
           // fetching data from the backend
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/hello",
+            process.env.BACKEND_URL + "/api/private",
             opts
           );
           const data = await resp.json();
