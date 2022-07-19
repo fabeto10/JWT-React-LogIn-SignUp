@@ -44,6 +44,7 @@ export const Login = () => {
           <button onClick={handleClick}>Login</button>
         </div>
       )}
+      {store.loginError && <p>{store.loginError}</p>}
     </div>
   );
 };

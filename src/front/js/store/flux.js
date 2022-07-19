@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // headers: {
       //   "Content-Type": "application/json",
       // },
+      loginError: null,
       token: null,
       message: null,
       demo: [
@@ -38,12 +39,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           );
           return response.status !== 201;
-          return true;
-          const data = await resp.json();
-          console.log("this came from the backend", data);
-          sessionStorage.setItem("token", data.access_token);
-          setStore({ token: data.access_token });
-          return true;
         } catch (error) {
           console.error("There has an error login in");
         }
@@ -80,6 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
           if (resp.status !== 200) {
             alert("there has been error!");
+            setStore({ loginError: "Verifique sus credenciales" });
             return false;
           }
           const data = await resp.json();
