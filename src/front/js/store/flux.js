@@ -27,13 +27,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       signUp: async (requestBody) => {
         try {
-          const response = await fetch(process.env.BACKEND_URL + "/api/users", {
-            method: "POST",
-            body: JSON.stringify(requestBody),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          const response = await fetch(
+            "https://3001-fabeto10-jwtreactloginy-p60htxcxh2n.ws-us54.gitpod.io/api/users",
+            {
+              method: "POST",
+              body: JSON.stringify(requestBody),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
           return response.status !== 201;
           return true;
           const data = await resp.json();
@@ -72,7 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/token",
+            "https://3001-fabeto10-jwtreactloginy-p60htxcxh2n.ws-us54.gitpod.io/api/token",
             opts
           );
           if (resp.status !== 200) {
