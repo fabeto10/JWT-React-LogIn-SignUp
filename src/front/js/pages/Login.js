@@ -20,7 +20,7 @@ export const Login = () => {
   };
 
   if (store.token && store.token != "" && store.token != undefined)
-    navigate("/");
+    navigate("/private");
 
   return (
     <div className="text-center mt-5">

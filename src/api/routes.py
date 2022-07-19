@@ -30,7 +30,7 @@ def create_token():
 def get_hello():
     email = get_jwt_identity()
     dictionary = {
-        "message":"hello world " + email
+        "message":f"hello world {email}"
     }
     return jsonify(dictionary), 200
 
