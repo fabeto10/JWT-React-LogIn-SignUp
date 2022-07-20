@@ -28,16 +28,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       signUp: async (requestBody) => {
         try {
-          const response = await fetch(
-            "https://3001-fabeto10-jwtreactloginy-p60htxcxh2n.ws-us54.gitpod.io/api/users",
-            {
-              method: "POST",
-              body: JSON.stringify(requestBody),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          const response = await fetch(process.env.BACKEND_URL + "/api/users", {
+            method: "POST",
+            body: JSON.stringify(requestBody),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
           return response.status !== 201;
         } catch (error) {
           console.error("There has an error login in");
@@ -70,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         try {
           const resp = await fetch(
-            "https://3001-fabeto10-jwtreactloginy-p60htxcxh2n.ws-us54.gitpod.io/api/token",
+            process.env.BACKEND_URL + "/api/token",
             opts
           );
           if (resp.status !== 200) {
