@@ -9,6 +9,7 @@ export const Navbar = () => {
       <div className="container">
         <span className="navbar-brand mb-0 h1">React Boilerplate</span>
         <div className="ml-auto">
+          {/* renderizado condicional cuando esta iniciada la sesion */}
           {!store.token ? (
             <Link to="/sign-up">
               <button className="btn btn-primary me-3">Sign Up</button>
