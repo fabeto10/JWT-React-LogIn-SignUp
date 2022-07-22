@@ -9,7 +9,6 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const token = sessionStorage.getItem("token");
   // console.log("this is your token", token);
   const navigate = useNavigate();
 

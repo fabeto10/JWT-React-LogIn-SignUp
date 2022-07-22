@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const SignUp = () => {
   const { store, actions } = useContext(Context);
@@ -10,8 +11,9 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  if (store.token && store.token != "" && store.token != undefined)
-    navigate("/");
+  useEffect(() => {
+    if (store.token != null) navigate("/private");
+  }, [store.token]);
 
   return (
     <div
@@ -47,7 +49,7 @@ export const SignUp = () => {
                 email: email,
                 password: password,
               });
-              if (success) {
+              if (success && email != "" && password != "") {
                 navigate("/login");
                 return;
               }

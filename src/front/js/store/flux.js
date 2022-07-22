@@ -28,6 +28,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       signUp: async (requestBody) => {
         try {
+          if (requestBody.password == "" || requestBody.email == "")
+            return false;
           const response = await fetch(process.env.BACKEND_URL + "/api/users", {
             method: "POST",
             body: JSON.stringify(requestBody),
@@ -35,7 +37,9 @@ const getState = ({ getStore, getActions, setStore }) => {
               "Content-Type": "application/json",
             },
           });
-          return response.status !== 201;
+          if (response.status !== 200) {
+            return false;
+          }
         } catch (error) {
           console.error("There has an error login in");
         }
